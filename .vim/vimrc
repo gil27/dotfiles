@@ -1,0 +1,154 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Enable copying to clipboard using `CTRL + c`
+map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+  " let Vundle manage Vundle, required
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'danro/rename.vim'
+  Plugin 'jiangmiao/auto-pairs'
+  Plugin 'tpope/vim-bundler'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-rails'
+  Plugin 'tpope/vim-endwise'
+  Plugin 'kchmck/vim-coffee-script'
+  Plugin 'garbas/vim-snipmate'
+  Plugin 'nathanaelkane/vim-indent-guides'
+  Plugin 'bling/vim-airline'
+  Plugin 'wesQ3/vim-windowswap'
+  Plugin 'mattn/emmet-vim'
+  Plugin 'scrooloose/syntastic'
+  Plugin 'MarcWeber/vim-addon-mw-utils'
+  Plugin 'tomtom/tlib_vim'
+  Plugin 'vim-ruby/vim-ruby'
+  Plugin 'ecomba/vim-ruby-refactoring'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+execute pathogen#infect()
+
+syntax on 						" Turn on syntax highlighting
+
+filetype plugin indent on
+
+set expandtab					" tabs are spaces
+
+:set laststatus=2
+
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode
+
+color grb256
+
+set guioptions-=T 		" Removes top toolbar
+set guioptions-=r 		" Removes right hand scroll bar
+set go-=L 						" Removes left hand scroll bar
+autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> correctly
+:set cpoptions+=$ 		" puts a $ marker for the end of words/lines in cw/c$ commands
+
+
+" Indentation settings
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set autoindent
+set tabstop=2
+
+
+set foldmethod=indent 	" Folding settings
+set foldnestmax=3				" Set deepest folding to 3 levels
+set nofoldenable				" Don't fold by default
+
+set wildmode=longest,list " Activate TAB auto-complete for file paths
+
+set wildmenu						" Make tab completion for files/buffers act like bash
+
+set splitbelow
+set splitright
+
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+set showmatch           " highlight matching [{()}]
+
+set incsearch           " search as characters are entered
+
+set hlsearch            " highlight matches
+
+set cursorline          " highlight current line
+
+set number              " show line numbers
+
+set showcmd             " show command in bottom bar
+
+set history=50		" keep 50 lines of command line history
+
+
+filetype indent on      " load filetype-specific indent files
+"This both turns on filetype detection and allows loading of language specific indentation files based on that detection. For me, this means the python indentation file that lives at ~/.vim/indent/python.vim gets loaded every time I open a *.py file.
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+:nnoremap rap  :RAddParameter<cr>
+:nnoremap rcpc :RConvertPostConditional<cr>
+:nnoremap rel  :RExtractLet<cr>
+:vnoremap rec  :RExtractConstant<cr>
+:vnoremap relv :RExtractLocalVariable<cr>
+:nnoremap rit  :RInlineTemp<cr>
+:vnoremap rrlv :RRenameLocalVariable<cr>
+:vnoremap rriv :RRenameInstanceVariable<cr>
+:vnoremap rem  :RExtractMethod<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeShowBookmarks = 0
+let NERDChristmasTree = 1
+let NERDTreeWinPos = "left"
+let NERDTreeHijackNetrw = 1
+"let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize = 40
+let g:NERDTreeWinPos = "right"
+
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+map <leader>p :NERDTreeToggle<cr>
+
+" Open NERDTree by default
+"autocmd VimEnter * NERDTree
+"autocmd VimEnter * wincmd p
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+highlight ExtraWhitespace ctermbg=196 guibg=#FF1100 ctermfg=white guifg=white
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+map <leader>w :w<cr>
+map <leader>q :q<cr>
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
