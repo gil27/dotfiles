@@ -1,0 +1,9 @@
+# GIT ALIAS
+alias gst='git status'
+alias gc='git commit -m'
+
+# SSH ALIAST
+alias gil='ssh gil@gilgomes.com.br'
+
+# PRONTO
+alias prun='pronto run --unstaged'
