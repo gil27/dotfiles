@@ -20,7 +20,6 @@ inoremap <buffer> <silent> § =AutoPairsMoveCharacter('''')
 inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
 inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
 inoremap <buffer> <silent> ¨ =AutoPairsMoveCharacter('(')
-inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
 inoremap <buffer> <silent> î :call AutoPairsJump()a
 inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
 inoremap <buffer> <silent> â =AutoPairsBackInsert()
@@ -30,23 +29,11 @@ inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
 inoremap <buffer> <silent> Ý =AutoPairsMoveCharacter(']')
 inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
 nmap <buffer> [c <Plug>(GitGutterPrevHunk)
-vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*endf\%[unction]\>', "bW")
-nnoremap <buffer> <silent> [] m':call search('^\s*endf\%[unction]\>', "bW")
-vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "bW")
-nnoremap <buffer> <silent> [[ m':call search('^\s*fu\%[nction]\>', "bW")
 nmap <buffer> \hp <Plug>(GitGutterPreviewHunk)
 nmap <buffer> \hu <Plug>(GitGutterUndoHunk)
 nmap <buffer> \hs <Plug>(GitGutterStageHunk)
 xmap <buffer> \hs <Plug>(GitGutterStageHunk)
 nmap <buffer> ]c <Plug>(GitGutterNextHunk)
-vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*endf\%[unction]\>', "W")
-nnoremap <buffer> <silent> ][ m':call search('^\s*endf\%[unction]\>', "W")
-vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "W")
-nnoremap <buffer> <silent> ]] m':call search('^\s*fu\%[nction]\>', "W")
 xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
 omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
 xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
@@ -70,7 +57,7 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal noautoindent
+setlocal autoindent
 setlocal backupcopy=
 setlocal balloonexpr=
 setlocal nobinary
@@ -84,8 +71,8 @@ setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
-setlocal commentstring=\"%s
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -94,7 +81,7 @@ setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
-setlocal nocursorline
+setlocal cursorline
 setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
@@ -102,22 +89,22 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+if &filetype != 'sh'
+setlocal filetype=sh
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
-setlocal foldenable
+setlocal nofoldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
+setlocal foldmethod=indent
 setlocal foldminlines=1
-setlocal foldnestmax=20
+setlocal foldnestmax=3
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=n1croql
+setlocal formatoptions=tcqrn1
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
@@ -125,12 +112,12 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetVimIndent()
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,=end,=else,=cat,=fina,=END,0\\,0=\"\\\ 
+setlocal indentexpr=GetShIndent()
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,#
-setlocal keywordprg=:help
-setlocal nolinebreak
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal list
@@ -166,10 +153,10 @@ setlocal spellfile=
 setlocal spelllang=en
 setlocal statusline=
 setlocal suffixesadd=
-setlocal swapfile
+setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != 'sh'
+setlocal syntax=sh
 endif
 setlocal tabstop=2
 setlocal tagcase=
@@ -178,7 +165,7 @@ setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=78
+setlocal textwidth=0
 setlocal thesaurus=
 setlocal noundofile
 setlocal undolevels=-123456
@@ -189,13 +176,13 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 287 - ((34 * winheight(0) + 20) / 40)
+let s:l = 127 - ((53 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-287
-normal! 05|
+127
+normal! 0
 let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 " vim: set ft=vim :

@@ -2,21 +2,7 @@
 if filereadable(expand("~/.vimrc.plug"))
   source ~/.vimrc.plug
 endif
-
 colorscheme onedark
-
-
-filetype off " Helps force plug-ins to load correctly when it is turned back on below.
-syntax on " Turn on syntax highlighting.
-filetype plugin indent on " For plug-ins to load correctly.
-
-" Vim's auto indentation feature does not work properly with text copied from outside of Vim. Press the <F2> key to toggle paste mode on/off.
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F2>
-
-
-
 set nocompatible " Set compatibility to Vim only.
 set modelines=0 " Turn off modelines
 set wrap " Automatically wrap text that extends beyond the screen length.
@@ -44,9 +30,6 @@ set number
 
 " Set status line display
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
-
-" Encoding
-set encoding=utf-8
 
 " Include matching uppercase words with lowercase search term
 set ignorecase
@@ -226,3 +209,20 @@ set incsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 nnoremap <C-p> :Files<Cr>
+
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
