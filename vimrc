@@ -74,6 +74,7 @@ vnoremap <Space> zf
 " Settings
 "
 
+set title                                       " Set the window’s title, reflecting the file currently being edited
 set rtp+=/usr/local/opt/fzf
 set autoread                                    " Loads from disk
 set nocompatible                                " Set compatibility to Vim only.
@@ -184,7 +185,7 @@ set runtimepath^=~/.vim/plugged/ag
 
 let g:ag_working_path_mode="r"
 " nmap <Bslash> :tabnew<CR>:Ag<Space>
-nmap <Bslash> :Ag<Space>
+" nmap <Bslash> :Ag<Space>
 
 
 "
@@ -200,4 +201,4 @@ endfor
 
 let g:fzf_preview_window = 'right:60%'  " Preview window to fzf
 let g:fzf_buffers_jump = 1              " [Buffers] Jump to the existing window if possible
-
+nmap <Bslash> :Rg<Space>
