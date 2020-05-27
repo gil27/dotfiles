@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/gil/code/site'
-let g:netrw_dirhist_2='/media/3CC276D7C27694BC/fcs'
-let g:netrw_dirhist_3='/home/flexa/code/flexa'
-let g:netrw_dirhist_4='/home/flexa/code/flexacloud'
-let g:netrw_dirhist_5='/home/gil/code/agregador/config/deploy'
-let g:netrw_dirhist_6='/home/gil/code/agregador'

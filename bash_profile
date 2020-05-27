@@ -16,6 +16,10 @@ if [ -f ~/.bashrc  ]; then
   . ~/.bashrc
 fi
 
+if [ -f ~/.bioritmo_alias ]; then
+  . ~/.bioritmo_alias
+fi
+
 # Reset
 Color_Off="\[\033[0m\]"       # Text Reset
 
@@ -33,6 +37,7 @@ White="\[\033[0;37m\]"        # White
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
+
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
@@ -53,13 +58,5 @@ export PATH="/usr/local/opt/node@10/bin:$PATH"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-alias prod-smart-system='ssh gilgomes@10.31.5.14'
-alias staging-smart-system='ssh gilgomes@10.31.5.40'
-
-new-tag() {
-  local folder=$(basename `pwd`)
-  echo "$folder-`date '+%Y%m%d%H%M%S'`"
-}
 export LC_ALL=en_US.UTF-8
-alias vpn-connect="networksetup -connectpppoeservice 'Bio Ritmo'"
-alias vpn-disconnect="networksetup -disconnectpppoeservice 'Bio Ritmo'"
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
