@@ -50,8 +50,8 @@ imap <C-s> <esc>:w<cr>
 
 nmap sop :tabnew $MYVIMRC<cr>                       " abre o .vimrc de qualquer lugar
 nmap <C-p> :Files<Cr>                               " abre o FZF
-nmap j gj			                                      " navegação sem saltar linha grande
-nmap k gk 			                                    " navegação sem saltar linha grande
+" nmap j gj			                                      " navegação sem saltar linha grande
+" nmap k gk                                           " navegação sem saltar linha grande
 nmap ,cc :tabclose<CR>                              " gerenica de tabs
 nmap ,n :tabnew<CR>                                 " gerenica de tabs
 nmap ,o :tabo<CR>                                   " gerenica de tabs
@@ -59,6 +59,9 @@ nmap ,m :tabprev<CR>                                " gerenica de tabs
 nmap ,. :tabnext<CR>                                " gerenica de tabs
 nmap <F5> :checktime<CR>	                          " atualiza os arquivos que foram alterados fora do vim
 nmap <silent> ,<Space> :nohlsearch<Bar>:echo<CR>    " Press Space to turn off highlighting and clear message already displayed
+nmap <leader>o o<esc>                               " Adiciona linha em branco
+nmap <leader>O O<esc>                               " Adiciona linha em branco
+
 
 :nnoremap <leader>rap  :RAddParameter<cr>           " Add Parameter
 :nnoremap <leader>rip  :RInlineTempi<cr>            " Inline Temp
