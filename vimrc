@@ -48,31 +48,35 @@ imap jk <esc>
 imap kj <esc>
 imap <C-s> <esc>:w<cr>
 
-nmap sop :tabnew $MYVIMRC<cr>                       " abre o .vimrc de qualquer lugar
-nmap <C-p> :Files<Cr>                               " abre o FZF
-" nmap j gj			                                      " navegação sem saltar linha grande
-" nmap k gk                                           " navegação sem saltar linha grande
-nmap ,cc :tabclose<CR>                              " gerenica de tabs
-nmap ,n :tabnew<CR>                                 " gerenica de tabs
-nmap ,o :tabo<CR>                                   " gerenica de tabs
-nmap ,m :tabprev<CR>                                " gerenica de tabs
-nmap ,. :tabnext<CR>                                " gerenica de tabs
-nmap <F5> :checktime<CR>	                          " atualiza os arquivos que foram alterados fora do vim
-nmap <silent> ,<Space> :nohlsearch<Bar>:echo<CR>    " Press Space to turn off highlighting and clear message already displayed
-nmap <leader>o o<esc>                               " Adiciona linha em branco
-nmap <leader>O O<esc>                               " Adiciona linha em branco
+nmap sop :tabnew $MYVIMRC<cr>
+nmap <C-p> :Files<Cr>
+nmap j gj
+nmap k gk
+nmap ,cc :tabclose<CR>
+nmap ,n :tabnew<CR>
+nmap ,o :tabo<CR>
+nmap ,m :tabprev<CR>
+nmap ,. :tabnext<CR>
+nmap <F5> :checktime<CR>
+nmap <silent> ,<Space> :nohlsearch<Bar>:echo<CR>
+nmap <C-l> :NERDTreeToggle<cr>
+nmap <C-k> :NERDTreeFind<cr>
+nmap <leader>o o<esc>
+nmap <leader>O O<esc>
 
+:nnoremap <leader>rap  :RAddParameter<cr>
+:nnoremap <leader>rip  :RInlineTempi<cr>
+:nnoremap <leader>rcpc :RConvertPostConditional<cr>
+:nnoremap <leader>rec  :RExtractConstant<cr>
+:nnoremap <leader>rel  :RExtractLet<cr>
+:nnoremap <leader>relv :RExtractLocalVariable<cr>
+:nnoremap <leader>rrlv :RRenameLocalVariable<cr>
+:nnoremap <leader>rriv :RRenameInstanceVariable<cr>
+:nnoremap <leader>rem :RExtractMethod<cr>
 
-:nnoremap <leader>rap  :RAddParameter<cr>           " Add Parameter
-:nnoremap <leader>rip  :RInlineTempi<cr>            " Inline Temp
-:nnoremap <leader>rcpc :RConvertPostConditional<cr> " Convert Post Conditional
-:nnoremap <leader>rec  :RExtractConstant<cr>        " Extract Constant          (visual selection)
-:nnoremap <leader>rel  :RExtractLet<cr>             " Extract to Let (Rspec)
-:nnoremap <leader>relv :RExtractLocalVariable<cr>   " Extract Local Variable    (visual selection)
-:nnoremap <leader>rrlv :RRenameLocalVariable<cr>    " Rename Local Variable     (visual selection/variable under the cursor, *REQUIRES matchit.vim*)
-:nnoremap <leader>rriv :RRenameInstanceVariable<cr> " Rename Instance Variable  (visual selection, *REQUIRES matchit.vim*)
-:nnoremap <leader>rem :RExtractMethod<cr>           " Extract Method            (visual selection, *REQUIRES matchit.vim*)
 vnoremap <Space> zf
+
+
 "
 " Settings
 "
@@ -173,8 +177,6 @@ let NERDTreeWinPos = "left"
 let NERDTreeHijackNetrw = 1
 "let NERDTreeQuitOnOpen = 1
 let NERDTreeWinSize = 40
-nmap <C-l> :NERDTreeToggle<cr>
-nmap <C-k> :NERDTreeFind<cr>
 let g:NERDTreeWinSize = 20
 "autocmd VimEnter * NERDTree
 "autocmd VimEnter * wincmd p
