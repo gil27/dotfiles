@@ -46,9 +46,8 @@ map <leader>q :q<cr>
 
 imap jk <esc>
 imap kj <esc>
-imap <C-s> <esc>:w<cr>
-
-nmap sop :tabnew $MYVIMRC<cr>
+nmap so :tabnew $MYVIMRC<cr>
+nmap sop :source %<cr>
 nmap <C-p> :Files<Cr>
 nmap j gj
 nmap k gk
@@ -158,6 +157,7 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd FileType yml setlocal commentstring=#\ %s
 " autocmd BufWinLeave *.* mkview " Automatically save and load folds
 autocmd BufWinEnter *.* silent loadview " Automatically save and load folds
 
