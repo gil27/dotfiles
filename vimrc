@@ -63,6 +63,12 @@ nmap <C-k> :NERDTreeFind<cr>
 nmap <leader>o o<esc>
 nmap <leader>O O<esc>
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 :nnoremap <leader>rap  :RAddParameter<cr>
 :nnoremap <leader>rip  :RInlineTempi<cr>
 :nnoremap <leader>rcpc :RConvertPostConditional<cr>
@@ -72,6 +78,17 @@ nmap <leader>O O<esc>
 :nnoremap <leader>rrlv :RRenameLocalVariable<cr>
 :nnoremap <leader>rriv :RRenameInstanceVariable<cr>
 :nnoremap <leader>rem :RExtractMethod<cr>
+
+noremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 vnoremap <Space> zf
 
@@ -145,6 +162,7 @@ let g:indentLine_char = '[]'
 let g:indentLine_first_char = '[]'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
+let g:coc_global_extensions = ['coc-solargraph']
 
 "
 " - Commands
@@ -180,7 +198,6 @@ let NERDTreeWinSize = 40
 let g:NERDTreeWinSize = 20
 "autocmd VimEnter * NERDTree
 "autocmd VimEnter * wincmd p
-
 
 "
 " Vim Ag

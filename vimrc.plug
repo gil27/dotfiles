@@ -2,7 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'danro/rename.vim'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
 Plug 'garbas/vim-snipmate'
 "Plug 'nathanaelkane/vim-indent-guides'
@@ -26,6 +26,6 @@ Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'ayu-theme/ayu-vim'
 Plug 'nerdypepper/agila.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
