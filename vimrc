@@ -43,6 +43,7 @@ let mapleader = "\<Space>"
 
 map <leader>w :w<cr>
 map <leader>q :q<cr>
+map <leader>wq :wq<cr>
 
 imap jk <esc>
 imap kj <esc>
@@ -68,6 +69,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+map <leader>h :wincmd h<CR>
+ map <leader>j :wincmd j<CR>
+ map <leader>k :wincmd k<CR>
+ map <leader>l :wincmd l<CR>
 
 :nnoremap <leader>rap  :RAddParameter<cr>
 :nnoremap <leader>rip  :RInlineTempi<cr>
@@ -154,6 +160,9 @@ set smarttab  			                            " Enable smart-tabs
 set undolevels=1000 		                        " Number of undo levels
 set viminfo='100,<9999,s100 	                  " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}  " Set status line display
+
+
+set colorcolumn=80
 
 "
 " Let's
