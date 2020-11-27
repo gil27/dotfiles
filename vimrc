@@ -143,7 +143,7 @@ set autoindent                                  " Indentation settings
 set expandtab
 set tabstop=2
 set foldmethod=indent                           " Folding settings
-set foldnestmax=3 		                          " Set deepest folding to 3 levels
+set foldnestmax=4 		                          " Set deepest folding to 3 levels
 set nofoldenable "                              " Don't fold by default
 set wildmode=longest,list 	                    " Activate TAB auto-complete for file paths
 set wildmenu 			                              " Make tab completion for files/buffers act like bash
