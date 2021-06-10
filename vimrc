@@ -191,6 +191,8 @@ autocmd BufWinEnter *.* silent loadview " Automatically save and load folds
 au BufWritePre * :%s/\s\+$//e
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
+"TableModeToggle
+
 "
 " PLUGINS
 "
@@ -233,3 +235,8 @@ endfor
 let g:fzf_preview_window = 'right:60%'  " Preview window to fzf
 let g:fzf_buffers_jump = 1              " [Buffers] Jump to the existing window if possible
 nmap <Bslash> :Rg<Space>
+
+
+
+let g:snipMate = { 'snippet_version' : 1 }
+
