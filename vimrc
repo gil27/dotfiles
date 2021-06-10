@@ -31,6 +31,9 @@ hi LineNr  guifg=grey
 " Configurations
 "
 
+let g:snipMate = { 'snippet_version' : 1 }
+
+
 " Moving
 
 set clipboard+=unnamed " copy & paste de qualquer lugar
